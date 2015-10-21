@@ -32,3 +32,8 @@ $factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
         'comentario' => $faker->text(200)
     ];
 });
+$factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+    ];
+});

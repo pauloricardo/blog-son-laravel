@@ -18,4 +18,7 @@ class Post extends Model
     public function comentarios(){
         return $this->hasMany(\App\Models\Comment::class);
     }
+    public function tags(){
+        return $this->belongsToMany('\App\Models\Tag','tags_posts');
+    }
 }

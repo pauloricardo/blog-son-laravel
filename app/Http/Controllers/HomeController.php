@@ -12,8 +12,15 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
+    /**
+     * @var \App\Models\Post
+     */
+    private $post;
+    public function __construct(\App\Models\Post $post){
+        $this->post = $post;
+    }
     public function index(){
-        $posts = \App\Models\Post::all();
+        $posts = $this->post->paginate(5);
 
         return view('home.index',['posts'=>$posts]);
     }

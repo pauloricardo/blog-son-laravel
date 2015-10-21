@@ -14,7 +14,10 @@
 Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
-Route::get('/post/{id}', 'PostsController@post');
+Route::get('posts', 'PostsController@posts');
+Route::get('admin', 'PostsAdminController@index');
+
+Route::get('/posts/post/{id}', 'PostsController@post');
 
 Route::get('test', 'TestController@index');
 Route::get('test/notas', 'TestController@notas');

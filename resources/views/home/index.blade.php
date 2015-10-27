@@ -23,7 +23,7 @@
             @foreach($posts as $post)
                 <div class="col-md-10">
                     <h5>{{$post->titulo}}</h5>
-                    <h6>Escrito por: <strong>{{isset($post->user->name) ? $post->user->name : "Anonimo"}}</strong></h6>
+                    <h6>Escrito por: <strong>{{isset($post->user->name) ? $post->user->name : "Anonimoss"}}</strong></h6>
                     <small>{{date_format($post->created_at,date('d/m/Y H:m:s'))}}</small>
                     <p class="text-justify">
                         {{nl2br($post->conteudo)}}

@@ -32,13 +32,8 @@ class PostsAdminController extends Controller
         }
 
         public function store(\App\Http\Requests\PostRequest $request){
-            $tags = array_filter(array_map('trim',explode(",", $request->tags)));
-            $tagsIds = [];
-            foreach($tags as $tag){
-                $tagsIds[] = \App\Models\Tag::firstOrCreate(['name'=>$tag])->id;
-            }
             $post = $this->post->create($request->all());
-            $post->tags()->sync($tagsIds);
+            $post->tags()->sync($this->tagsIds($request->tags));
 
             return redirect()->route('admin.posts.index');
         }
@@ -48,13 +43,24 @@ class PostsAdminController extends Controller
             return view('admin.posts.edit',['post'=>$post]);
         }
     public function update($id, \App\Http\Requests\PostRequest $request){
-        $post = $this->post->find($id)->update($request->all());
+
+        $this->post->find($id)->update($request->all());
+        $post = $this->post->find($id);
+        $post->tags()->sync($this->tagsIds($request->tags));
 
         return redirect()->route('admin.posts.index');
     }
     public function destroy($id){
         $post = $this->post->find($id)->delete();
         return redirect()->route('admin.posts.index');
+    }
+    private function tagsIds($_tags){
+        $tags = array_filter(array_map('trim',explode(",", $_tags)));
+        $tagsIds = [];
+        foreach($tags as $tag){
+            $tagsIds[] = \App\Models\Tag::firstOrCreate(['name'=>$tag])->id;
+        }
+        return $tagsIds;
     }
 
 }

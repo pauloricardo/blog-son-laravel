@@ -22,11 +22,11 @@
             <h1>Bem vindo ao Blog Ciência 2000!!</h1>
             @foreach($posts as $post)
                 <div class="col-md-10">
-                    <h5>{{$post['titulo']}}</h5>
-                    <h6>Escrito por: <strong>{{$post->user->name}}</strong></h6>
-                    <small>{{date_format($post['created_at'],date('d/m/Y H:m:s'))}}</small>
+                    <h5>{{$post->titulo}}</h5>
+                    <h6>Escrito por: <strong>{{isset($post->user->name) ? $post->user->name : "Anonimo"}}</strong></h6>
+                    <small>{{date_format($post->created_at,date('d/m/Y H:m:s'))}}</small>
                     <p class="text-justify">
-                        {{nl2br($post['conteudo'])}}
+                        {{nl2br($post->conteudo)}}
                         <br>
                         <a href="/posts/post/{{$post->id}}" class="btn btn-sm btn-info">Ler Mais</a>
                     </p>

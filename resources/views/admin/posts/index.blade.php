@@ -22,8 +22,8 @@
                         <td>{{$post->user->name}}</td>
                         <td>{{$post->titulo}}</td>
                         <td>
-                            <a href="{{route('admin.posts.edit', ['id'=>$post->id])}}" class="btn btn-sm btn-default">Editar</a>
-                            <a href="{{route('admin.posts.destroy', ['id'=>$post->id])}}" class="btn btn-sm btn-danger">Deletar</a>
+                            <a href="{{route('admin.posts.edit', ['id'=>$post->id])}}">Editar</a>
+                            <a href="{{route('admin.posts.destroy', ['id'=>$post->id])}}">Deletar</a>
                         </td>
                     </tr>
                 @endforeach

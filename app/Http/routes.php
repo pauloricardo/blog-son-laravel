@@ -13,9 +13,17 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
+Route::get('/home', 'PostsAdminController@index');
+
 Route::get('/contact', 'HomeController@contact');
 Route::get('posts', 'PostsController@posts');
-Route::group(['prefix'=>'admin'], function(){
+Route::get('/auth/logout', function(){
+    Auth::logout();
+});
+Route::get('auth/login', 'auth\AuthController@getLogin');
+Route::post('auth/login', 'auth\AuthController@postLogin');
+
+Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
     Route::get('',
         [
             'as' => 'admin.index',

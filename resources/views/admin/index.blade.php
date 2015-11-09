@@ -6,6 +6,9 @@
     <div class="row">
         <div class="col-lg-12">
             <h1>Blog admin</h1>
+            <a href="{{route('admin.posts.create')}}" class="btn btn-info">Criar novo post</a>
+            <br><br>
+
             <table class="table table-bordered table-responsive">
                 <thead>
                     <tr>

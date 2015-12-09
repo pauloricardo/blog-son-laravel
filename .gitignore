@@ -5,3 +5,6 @@ Homestead.json
 .env
 /.idea/
 .idea/workspace.xml
+/composer.phar
+composer.phar
+
